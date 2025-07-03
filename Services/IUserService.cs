@@ -11,5 +11,10 @@ namespace SampleWebApiAspNetCore.Services
 
 
         Task<UserEntity> GetByUsername(string username);
+        Task<List<UserEntity>> GetAllAsync();
+        Task<UserEntity?> Finduser(Guid id);
+        bool Save();
+
+        
     }
 }

@@ -21,7 +21,7 @@ public class AuditLogMiddleware
     public async Task InvokeAsync(HttpContext httpContext, FoodDbContext dbContext)
     {
        
-       //dbContext.Request.EnableBuffering();
+       
         
     }
 }

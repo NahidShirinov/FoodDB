@@ -14,6 +14,7 @@ namespace SampleWebApiAspNetCore.Repositories
         public DbSet<FoodEntity> FoodItems { get; set; } = null!;
         public DbSet<AuditLogEntity>AuditLogs { get; set; } = null!;
         public DbSet<UserEntity> Users { get; set; }
+        
     }
     
 }

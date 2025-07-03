@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.EntityFrameworkCore;
 using SampleWebApiAspNetCore.Entities;
 using SampleWebApiAspNetCore.Services;
 
@@ -6,57 +6,73 @@ namespace SampleWebApiAspNetCore.Repositories;
 
 public class UserService : IUserService
 {
-    private List<UserEntity> _user = new()
+    private readonly FoodDbContext _context;
+
+    public UserService(FoodDbContext context)
     {
-        new UserEntity() { Username = "admin", Password = "password" },
-        new UserEntity() { Username = "nahid", Password = "1234" }
-    };
+        _context = context;
+    }
 
     public UserEntity Authenticate(string username, string password)
     {
-        return _user.FirstOrDefault(x => x.Username == username && x.Password == password);
+        return _context.Users
+            .FirstOrDefault(u => u.Username == username && u.Password == password);
     }
 
     public bool Exists(string username)
     {
-        return _user.Any(x => x.Username == username);
+        return _context.Users.Any(u => u.Username == username);
     }
 
-    public Task<UserEntity> CreateAsync(string dtoUsername, string dtoPassword)
+    public async Task<UserEntity> CreateAsync(string dtoUsername, string dtoPassword)
     {
-        if (_user.Any(x => x.Username == dtoUsername && x.Password == dtoPassword))
+        if (Exists(dtoUsername))
         {
             throw new InvalidOperationException("Bu istifadəçi artıq mövcuddur.");
         }
 
         var user = new UserEntity
         {
-            Id = Guid.NewGuid(),
+        
             Username = dtoUsername,
             Password = dtoPassword
         };
 
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
 
-        _user.Add(user);
-
-        return Task.FromResult(user);
+        return user;
     }
 
-    public Task<bool> DeleteUserAsync(Guid id)
+   public async Task<bool> DeleteUserAsync(Guid id)
+{
+    var user = await _context.Users.FindAsync(id);
+    if (user == null || user.IsDeleted)
+        return false;
+
+    user.IsDeleted = true;
+    await _context.SaveChangesAsync();
+    return true;
+}
+
+
+    public async Task<UserEntity> GetByUsername(string username)
     {
-        var user = _user.FirstOrDefault(u => u.Id == id);
-        if (user == null)
-            return Task.FromResult(false);
-
-        _user.Remove(user);
-        return Task.FromResult(true);
+        return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
     }
 
-    public Task<UserEntity> GetByUsername(string username)
+    public async Task<List<UserEntity>> GetAllAsync()
     {
-        var user = _user.FirstOrDefault(u => u.Username == username);
-        return GetByUsername(username);
+        return await _context.Users.ToListAsync();
     }
 
+    public async Task<UserEntity?> Finduser(Guid id)
+    {
+        return await _context.Users.FindAsync(id);
+    }
 
+    public bool Save()
+    {
+        return (_context.SaveChanges() >= 0);
+    }
 }

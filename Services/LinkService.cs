@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿/*
+using Microsoft.AspNetCore.Mvc;
 using SampleWebApiAspNetCore.Models;
 using SampleWebApiAspNetCore.Helpers;
 using System.Reflection;
@@ -148,3 +149,4 @@ namespace SampleWebApiAspNetCore.Services
         }
     }
 }
+*/
