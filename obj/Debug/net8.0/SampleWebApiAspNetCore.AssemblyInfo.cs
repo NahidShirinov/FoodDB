@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SampleWebApiAspNetCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6472ffc57013397035cbb9fd2d1620e611134f49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e86cc34dc64d3a2e9be6c3601353cb37ac632ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("SampleWebApiAspNetCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SampleWebApiAspNetCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,4 +1,4 @@
-﻿using SampleWebApiAspNetCore.Entities;
+﻿/*using SampleWebApiAspNetCore.Entities;
 using SampleWebApiAspNetCore.Repositories;
 
 namespace SampleWebApiAspNetCore.Services
@@ -15,4 +15,4 @@ namespace SampleWebApiAspNetCore.Services
             context.SaveChanges();
         }
     }
-}
+}*/

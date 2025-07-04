@@ -12,8 +12,8 @@ using SampleWebApiAspNetCore.Repositories;
 namespace SampleWebApiAspNetCore.Migrations
 {
     [DbContext(typeof(FoodDbContext))]
-    [Migration("20250703121311_AddIsDeletedToFood")]
-    partial class AddIsDeletedToFood
+    [Migration("20250704100727_Skeleton")]
+    partial class Skeleton
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,6 +61,23 @@ namespace SampleWebApiAspNetCore.Migrations
                     b.ToTable("AuditLogs");
                 });
 
+            modelBuilder.Entity("SampleWebApiAspNetCore.Entities.CategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("SampleWebApiAspNetCore.Entities.FoodEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -70,6 +87,10 @@ namespace SampleWebApiAspNetCore.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Calories")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("CategoryId")
+                        .IsRequired()
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsDeleted")
@@ -82,6 +103,8 @@ namespace SampleWebApiAspNetCore.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("FoodItems");
                 });
@@ -106,6 +129,22 @@ namespace SampleWebApiAspNetCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SampleWebApiAspNetCore.Entities.FoodEntity", b =>
+                {
+                    b.HasOne("SampleWebApiAspNetCore.Entities.CategoryEntity", "Category")
+                        .WithMany("Foods")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("SampleWebApiAspNetCore.Entities.CategoryEntity", b =>
+                {
+                    b.Navigation("Foods");
                 });
 #pragma warning restore 612, 618
         }

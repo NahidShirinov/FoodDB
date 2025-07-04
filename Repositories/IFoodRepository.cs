@@ -14,5 +14,6 @@ namespace SampleWebApiAspNetCore.Repositories
         ICollection<FoodEntity> GetRandomMeal();
         int Count();
         bool Save();
+        bool CategoryExists(int categoryId);
     }
 }

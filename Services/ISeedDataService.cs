@@ -1,4 +1,5 @@
-﻿using SampleWebApiAspNetCore.Repositories;
+﻿/*
+using SampleWebApiAspNetCore.Repositories;
 
 namespace SampleWebApiAspNetCore.Services
 {
@@ -7,3 +8,4 @@ namespace SampleWebApiAspNetCore.Services
         void Initialize(FoodDbContext context);
     }
 }
+*/

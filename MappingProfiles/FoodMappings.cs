@@ -13,6 +13,8 @@ namespace SampleWebApiAspNetCore.MappingProfiles
             CreateMap<FoodEntity, FoodCreateDto>().ReverseMap();
             CreateMap<UserEntity, UserResponseDto>();
             CreateMap<UserCreateDto, UserEntity>(); 
+            CreateMap<CategoryEntity, CategoryReadDto>();
+            CreateMap<CategoryCreateDto, CategoryEntity>();
 
         }
     }

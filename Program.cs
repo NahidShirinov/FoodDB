@@ -83,7 +83,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuditLogService, AuditLogService>();
 builder.Services.AddScoped<IFoodRepository, FoodSqlRepository>();
 /*builder.Services.AddScoped(typeof(ILinkService<>), typeof(LinkService<>));*/
-builder.Services.AddSingleton<ISeedDataService, SeedDataService>();
+/*builder.Services.AddSingleton<ISeedDataService, SeedDataService>();*/
 
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 builder.Services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
@@ -118,7 +118,7 @@ if (app.Environment.IsDevelopment())
         }
     });
 
-    app.SeedData();
+    /*app.SeedData();*/
 }
 else
 {

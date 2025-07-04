@@ -38,6 +38,8 @@ C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debu
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Npgsql.dll
+C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -85,5 +87,3 @@ C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\obj\Debu
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\obj\Debug\net8.0\SampleWebApiAspNetCore.pdb
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\obj\Debug\net8.0\SampleWebApiAspNetCore.genruntimeconfig.cache
 C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\obj\Debug\net8.0\ref\SampleWebApiAspNetCore.dll
-C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Npgsql.dll
-C:\Users\nahid.shirinov\ASPNETCore-WebAPI-Sample\SampleWebApiAspNetCore\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

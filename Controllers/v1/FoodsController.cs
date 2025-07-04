@@ -21,6 +21,7 @@ namespace SampleWebApiAspNetCore.Controllers.v1
         private readonly IFoodRepository _foodRepository;
         private readonly IMapper _mapper;
         private readonly IAuditLogService _auditLogService;
+       
 
         public FoodsController(
             IFoodRepository foodRepository,
@@ -30,6 +31,7 @@ namespace SampleWebApiAspNetCore.Controllers.v1
             _foodRepository = foodRepository;
             _mapper = mapper;
             _auditLogService = auditLogService;
+    
         }
 
         [HttpGet(Name = nameof(GetAllFoods))]
@@ -69,6 +71,11 @@ namespace SampleWebApiAspNetCore.Controllers.v1
             if (foodCreateDto == null)
                 return BadRequest(new { error = "Food create model is null." });
 
+            // CategoryId mövcuddursa, yoxla:
+            var categoryExists = _foodRepository.CategoryExists(foodCreateDto.CategoryId);
+            if (!categoryExists)
+                return BadRequest($"Category with id {foodCreateDto.CategoryId} does not exist.");
+
             var toAdd = _mapper.Map<FoodEntity>(foodCreateDto);
             _foodRepository.Add(toAdd);
 
@@ -78,8 +85,9 @@ namespace SampleWebApiAspNetCore.Controllers.v1
             await _auditLogService.LogAsync("POST", HttpContext.Request.Path, nameof(AddFood), foodCreateDto);
 
             var foodDto = _mapper.Map<FoodDto>(toAdd);
-            return CreatedAtRoute(nameof(GetSingleFood), new { id = toAdd.Id }, foodDto);
+            return CreatedAtRoute(nameof(GetSingleFood), foodDto);
         }
+
 
         [HttpPut("{id:int}", Name = nameof(UpdateFood))]
         public async Task<ActionResult<FoodDto>> UpdateFood(int id, [FromBody] FoodUpdateDto foodUpdateDto)

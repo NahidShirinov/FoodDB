@@ -93,6 +93,11 @@ namespace SampleWebApiAspNetCore.Repositories
             return (_foodDbContext.SaveChanges() >= 0);
         }
 
+        public bool CategoryExists(int categoryId)
+        {
+            return _foodDbContext.Categories.Any(c => c.Id == categoryId);
+        }
+
         public ICollection<FoodEntity> GetRandomMeal()
         {
             List<FoodEntity> toReturn = new List<FoodEntity>
